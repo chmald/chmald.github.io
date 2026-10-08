@@ -23,7 +23,7 @@ export function validateData(data) {
   const err = (msg) => errors.push(msg);
 
   const site = data.site ?? {};
-  for (const key of ['url', 'title', 'description', 'language', 'disclaimer']) {
+  for (const key of ['url', 'title', 'description', 'language', 'disclaimer', 'projectsNote']) {
     if (!isNonEmptyString(site[key])) err(`site.${key} is required`);
   }
   if (site.url && (!isHttpsUrl(site.url) || site.url.endsWith('/'))) err('site.url must be an https URL without a trailing slash');
@@ -59,7 +59,7 @@ export function validateData(data) {
   const ids = new Set();
   projects.forEach((p, i) => {
     const where = `projects[${i}]${p && p.id ? ` (${p.id})` : ''}`;
-    for (const key of ['id', 'title', 'useCase', 'description', 'repo', 'type', 'icon']) {
+    for (const key of ['id', 'title', 'useCase', 'description', 'repo', 'type', 'icon', 'license']) {
       if (!isNonEmptyString(p[key])) err(`${where}.${key} is required`);
     }
     if (p.id) {

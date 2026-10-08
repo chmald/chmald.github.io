@@ -4,7 +4,8 @@
     "title": "Christopher Maldonado — Azure AI reference architectures",
     "description": "Reusable, deployable Azure AI reference architectures and demos by Christopher Maldonado: Foundry agents, AI gateways, RAG knowledge bases, document AI, voice AI, and Microsoft Fabric CI/CD.",
     "language": "en",
-    "disclaimer": "Personal projects and reference demos. Not official Microsoft products; provided as-is for learning and illustration. Opinions are my own."
+    "disclaimer": "Personal reference demos for testing and demonstration purposes only — provided as-is under the MIT License, without warranty or support. Not official Microsoft products or samples; not intended for production use. Opinions are my own.",
+    "projectsNote": "All projects are MIT-licensed reference demos for testing and demonstration purposes only."
   },
   "profile": {
     "name": "Christopher Maldonado",
@@ -62,6 +63,7 @@
       "type": "runbook",
       "deployable": true,
       "hasTemplate": true,
+      "license": "MIT",
       "services": [
         "Microsoft Foundry (hosted agents)",
         "Azure API Management (AI gateway)",
@@ -89,6 +91,7 @@
       "type": "runbook",
       "deployable": true,
       "hasTemplate": true,
+      "license": "MIT",
       "services": [
         "Azure API Management",
         "Azure Kubernetes Service",
@@ -116,6 +119,7 @@
       "type": "app",
       "deployable": true,
       "hasTemplate": true,
+      "license": "MIT",
       "services": [
         "Azure API Management (AI + MCP gateway)",
         "Microsoft Foundry",
@@ -139,6 +143,7 @@
       "type": "app",
       "deployable": true,
       "hasTemplate": true,
+      "license": "MIT",
       "services": [
         "Foundry Agent Service",
         "Azure Container Apps",
@@ -165,6 +170,7 @@
       "type": "runbook",
       "deployable": true,
       "hasTemplate": true,
+      "license": "MIT",
       "services": [
         "Azure AI Search",
         "Azure AI Document Intelligence",
@@ -188,6 +194,7 @@
       "type": "runbook",
       "deployable": true,
       "hasTemplate": true,
+      "license": "MIT",
       "services": [
         "Azure AI Search",
         "Azure AI Document Intelligence",
@@ -210,6 +217,7 @@
       "type": "app",
       "deployable": true,
       "hasTemplate": true,
+      "license": "MIT",
       "services": [
         "Azure AI Document Intelligence",
         "Azure AI Content Understanding",
@@ -230,6 +238,7 @@
       "type": "app",
       "deployable": true,
       "hasTemplate": true,
+      "license": "MIT",
       "services": [
         "Azure AI Voice Live API",
         "Azure OpenAI GPT Realtime API",
@@ -253,6 +262,7 @@
       "type": "app",
       "deployable": true,
       "hasTemplate": true,
+      "license": "MIT",
       "services": [
         "Azure AI Speech (Voice Live API)",
         "Azure text to speech avatar",
@@ -274,6 +284,7 @@
       "type": "workshop",
       "deployable": true,
       "hasTemplate": false,
+      "license": "MIT",
       "services": [
         "Microsoft Fabric",
         "Azure DevOps",

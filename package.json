@@ -2,6 +2,7 @@
   "name": "chmald.github.io",
   "version": "1.0.0",
   "private": true,
+  "license": "MIT",
   "description": "Personal portfolio and project index for Christopher Maldonado (GitHub Pages user site).",
   "type": "module",
   "engines": {

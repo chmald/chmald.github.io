@@ -43,6 +43,7 @@ To preview locally, serve the folder with any static server (the site uses root-
      "type": "app",
      "deployable": true,
      "hasTemplate": true,
+     "license": "MIT",
      "services": ["Microsoft Foundry", "Azure AI Search"],
      "icon": "agent",
      "thumbnail": "",
@@ -57,6 +58,7 @@ To preview locally, serve the folder with any static server (the site uses root-
    | `tracks` | One or more values from the top-level `tracks` list (`Apps & AI`, `Data`, `Infra`). |
    | `type` | `app`, `runbook`, or `workshop`. |
    | `hasTemplate` | `true` shows the **Deployable: `azd up`** badge; `false` shows **Guided workshop**. |
+   | `license` | SPDX license id of the project repository (`MIT` for every current project), shown as a badge on the card. |
    | `services` | Up to six key Azure services, shown as chips. |
    | `icon` | Placeholder icon: `agent`, `tools`, `gauge`, `chat`, `book`, `code`, `document`, `phone`, `avatar`, `pipeline`. |
    | `thumbnail` | Optional. `https://raw.githubusercontent.com/chmald/<id>/main/docs/assets/<file>.png` — only use a file that exists in the repository. Leave `""` for the generated gradient placeholder. If a set image ever fails to load, the page falls back to the placeholder automatically. |
@@ -73,4 +75,10 @@ To preview locally, serve the folder with any static server (the site uses root-
 
 ## Disclaimer
 
-Personal projects and reference demos. Not official Microsoft products; provided as-is for learning and illustration. Opinions are my own.
+Personal reference demos for testing and demonstration purposes only — provided as-is under the MIT License, without warranty or support. Not official Microsoft products or samples; not intended for production use. Opinions are my own.
+
+The footer disclaimer (`site.disclaimer`) and the note under **All projects** (`site.projectsNote`) are set in `data/projects.json`.
+
+## License
+
+Released under the [MIT License](LICENSE).

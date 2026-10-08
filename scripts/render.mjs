@@ -109,7 +109,8 @@ function badges(project) {
     .map((t) => `<li class="badge badge--${slug(t)}">${esc(t)}</li>`)
     .join('');
   const type = `<li class="badge badge--type">${esc(TYPE_LABELS[project.type])}</li>`;
-  return `<ul class="badges" aria-label="Tracks and type">${tracks}${type}</ul>`;
+  const license = `<li class="badge badge--license">${esc(project.license)}<span class="visually-hidden"> License</span></li>`;
+  return `<ul class="badges" aria-label="Tracks, type, and license">${tracks}${type}${license}</ul>`;
 }
 
 function chips(services) {
@@ -310,6 +311,7 @@ ${featured.map(featuredCard).join('\n')}
         <div class="section-head">
           <h2 id="projects-title">All projects</h2>
           <p>Every project is a public GitHub repository with an architecture diagram, docs, and testing guidance.</p>
+          <p class="section-note">${esc(site.projectsNote)}</p>
         </div>
         <div class="filters" role="group" aria-label="Filter projects by track" hidden>
           <button type="button" class="filter" data-filter="all" aria-pressed="true">All <span class="count">${projects.length}</span></button>
