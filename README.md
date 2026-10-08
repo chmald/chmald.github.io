@@ -69,7 +69,7 @@ To preview locally, serve the folder with any static server (the site uses root-
 
 ## Optional profile links
 
-`profile.links` holds placeholder entries (LinkedIn, blog) with an empty `url`. Links with an empty `url` are not rendered. Fill in the URL to show one in the About section.
+`profile.links` holds extra profile links (LinkedIn, blog). Links with an empty `url` are not rendered. A link with a URL is shown as a hero button, in the About card, and in the footer (with `rel="me noopener"`), and is added to the JSON-LD `sameAs` list. LinkedIn URLs get the LinkedIn icon; other links use a generic external-link icon.
 
 ## Disclaimer
 

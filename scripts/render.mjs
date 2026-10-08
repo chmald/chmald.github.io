@@ -52,6 +52,32 @@ export function icon(name, cls = 'icon') {
 // GitHub mark (Primer Octicons, MIT).
 export const GITHUB_ICON = '<svg class="icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>';
 
+// LinkedIn "in" mark drawn as a single even-odd path so it inherits currentColor like the GitHub mark.
+export const LINKEDIN_ICON = '<svg class="icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false" fill="currentColor" fill-rule="evenodd"><path d="M1.5 0h13A1.5 1.5 0 0 1 16 1.5v13a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0zM3 4.1a1.2 1.2 0 1 0 2.4 0a1.2 1.2 0 1 0-2.4 0zM3.1 6.1h2.2V13H3.1zM6.6 6.1h2.1v.95c.35-.6 1.15-1.15 2.35-1.15 2.1 0 2.55 1.35 2.55 3.1V13h-2.2V9.5c0-.85-.2-1.6-1.1-1.6-.95 0-1.35.7-1.35 1.65V13H6.6z"/></svg>';
+
+function isLinkedIn(url) {
+  return /(^|\.)linkedin\.com$/i.test(new URL(url).hostname);
+}
+
+// Profile links ("" url = hidden). Each gets an accessible name, an icon, and display text.
+function profileLinks(profile) {
+  return profile.links.filter((l) => l.url).map((l) => {
+    const linkedin = isLinkedIn(l.url);
+    const u = new URL(l.url);
+    return {
+      url: l.url,
+      name: linkedin ? 'LinkedIn profile' : l.label,
+      icon: linkedin ? LINKEDIN_ICON : icon('external'),
+      display: (u.hostname.replace(/^www\./, '') + u.pathname).replace(/\/$/, ''),
+    };
+  });
+}
+
+// Inline profile link used in the About card and footer: visible "host/path" text, prefixed for screen readers.
+function profileLinkInline(l) {
+  return `<a href="${esc(l.url)}" rel="me noopener">${l.icon}<span class="visually-hidden">${esc(l.name)}: </span>${esc(l.display)}</a>`;
+}
+
 export function formatDate(iso) {
   const [y, m, d] = iso.split('-').map(Number);
   const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -190,7 +216,7 @@ function footer(data, date) {
       <p class="disclaimer">${esc(data.site.disclaimer)}</p>
       <p class="footer-meta">
         <a href="${esc(data.profile.github)}">${GITHUB_ICON}github.com/${esc(data.profile.github.split('/').pop())}</a>
-        <span aria-hidden="true">·</span>
+${profileLinks(data.profile).map((l) => `        <span aria-hidden="true">·</span>\n        ${profileLinkInline(l)}\n`).join('')}        <span aria-hidden="true">·</span>
         <span>Last updated <time datetime="${date}">${formatDate(date)}</time></span>
       </p>
     </div>
@@ -236,7 +262,7 @@ export function renderIndex(data, date) {
   const byId = new Map(projects.map((p) => [p.id, p]));
   const featured = data.featured.map((id) => byId.get(id)).filter(Boolean);
   const deployable = projects.filter((p) => p.hasTemplate).length;
-  const links = profile.links.filter((l) => l.url);
+  const links = profileLinks(profile);
   const trackCounts = tracks.map((t) => [t, projects.filter((p) => p.tracks.includes(t)).length]);
 
   return `<!doctype html>
@@ -258,7 +284,7 @@ export function renderIndex(data, date) {
         <div class="hero-actions">
           <a class="button button--primary" href="#projects">${icon('arrowDown')}Browse projects</a>
           <a class="button button--secondary" href="${esc(profile.github)}">${GITHUB_ICON}GitHub profile</a>
-        </div>
+          ${links.map((l) => `          <a class="button button--secondary" href="${esc(l.url)}" rel="me noopener">${l.icon}${esc(l.name)}</a>\n`).join('')}        </div>
         <dl class="stats">
           <div><dt>Reference projects</dt><dd>${projects.length}</dd></div>
           <div><dt>Deployable with <code>azd up</code></dt><dd>${deployable}</dd></div>
@@ -307,7 +333,7 @@ ${profile.about.map((p) => `          <p>${esc(p)}</p>`).join('\n')}
           <ul class="chips chips--lg">${profile.focusAreas.map((f) => `<li>${esc(f)}</li>`).join('')}</ul>
           <ul class="about-links">
             <li><a href="${esc(profile.github)}">${GITHUB_ICON}github.com/${esc(profile.github.split('/').pop())}</a></li>
-${links.map((l) => `            <li><a href="${esc(l.url)}">${icon('external')}${esc(l.label)}</a></li>`).join('\n')}
+${links.map((l) => `            <li>${profileLinkInline(l)}</li>`).join('\n')}
           </ul>
         </aside>
       </div>

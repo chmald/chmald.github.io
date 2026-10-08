@@ -31,8 +31,7 @@
     "links": [
       {
         "label": "LinkedIn",
-        "url": "",
-        "todo": "TODO (optional): add a LinkedIn profile URL. Links with an empty url are not rendered."
+        "url": "https://www.linkedin.com/in/cmaldonado4"
       },
       {
         "label": "Blog",
