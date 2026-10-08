@@ -133,29 +133,6 @@
       "thumbnailAlt": ""
     },
     {
-      "id": "secure-agent-chat-webapp",
-      "title": "Secure Agent Chat Web App",
-      "useCase": "An Entra ID–authenticated chat web app for Foundry agents, deployed to Azure Container Apps with one command.",
-      "description": "A web front end for Foundry Agent Service agents with Microsoft Entra ID sign-in. The azd template creates the app registration and deploys the app to Azure Container Apps with managed identity and Application Insights.",
-      "highlights": [],
-      "repo": "https://github.com/chmald/secure-agent-chat-webapp",
-      "tracks": ["Apps & AI"],
-      "type": "app",
-      "deployable": true,
-      "hasTemplate": true,
-      "license": "MIT",
-      "services": [
-        "Foundry Agent Service",
-        "Azure Container Apps",
-        "Microsoft Entra ID",
-        "Managed Identity",
-        "Application Insights"
-      ],
-      "icon": "chat",
-      "thumbnail": "",
-      "thumbnailAlt": ""
-    },
-    {
       "id": "document-qa-knowledge-agent",
       "title": "Document Q&A Knowledge Agent",
       "useCase": "A reusable RAG knowledge-base pattern: ask questions over your documents and get cited answers.",

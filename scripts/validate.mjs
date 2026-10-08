@@ -80,6 +80,7 @@ export function validateData(data) {
     if (!Array.isArray(p.services) || p.services.length === 0 || !p.services.every(isNonEmptyString)) err(`${where}.services must be a non-empty array of strings`);
     else if (p.services.length > 6) err(`${where}.services should list at most 6 key services`);
     if (!Array.isArray(p.highlights) || !p.highlights.every(isNonEmptyString)) err(`${where}.highlights must be an array of strings (may be empty)`);
+    if (p.derivedFrom !== undefined && p.derivedFrom !== '') err(`${where} is derived from ${p.derivedFrom}; forks and derived repositories are not listed — remove the entry`);
     if (p.icon && !ICONS[p.icon]) err(`${where}.icon must be one of ${Object.keys(ICONS).join(', ')}`);
     if (typeof p.thumbnail !== 'string') err(`${where}.thumbnail must be a string ("" = generated placeholder)`);
     else if (p.thumbnail) {

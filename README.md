@@ -64,6 +64,7 @@ To preview locally, serve the folder with any static server (the site uses root-
    | `thumbnail` | Optional. `https://raw.githubusercontent.com/chmald/<id>/main/docs/assets/<file>.png` — only use a file that exists in the repository. Leave `""` for the generated gradient placeholder. If a set image ever fails to load, the page falls back to the placeholder automatically. |
    | `thumbnailAlt` | Required when `thumbnail` is set. Describe the diagram. |
    | `highlights` | Optional bullets, shown only when the project is featured. |
+   | `derivedFrom` | Do not set on listed projects. The site lists **original work only** — forks and repositories derived from someone else's template or sample are not listed. If you keep a note of such a repo in the data file, record its upstream as `"derivedFrom": "https://github.com/<owner>/<repo>"`; `npm run check` rejects any project entry with a non-empty `derivedFrom`, so remove the entry instead. |
 
 2. To feature a project, put its `id` in the top-level `featured` array (maximum three).
 3. Run `npm run build`, then `npm run check`.
