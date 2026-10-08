@@ -129,8 +129,8 @@
         "Log Analytics"
       ],
       "icon": "gauge",
-      "thumbnail": "",
-      "thumbnailAlt": ""
+      "thumbnail": "https://raw.githubusercontent.com/chmald/ai-cost-governance-gateway/main/docs/assets/ai-cost-governance-gateway-architecture.png",
+      "thumbnailAlt": "Architecture diagram: portal and governance API on Azure Container Apps behind Azure API Management as the AI and MCP gateway, with PostgreSQL budget ledger and token metrics to Application Insights"
     },
     {
       "id": "document-qa-knowledge-agent",
