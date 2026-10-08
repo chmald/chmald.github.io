@@ -1,0 +1,291 @@
+{
+  "site": {
+    "url": "https://chmald.github.io",
+    "title": "Christopher Maldonado — Azure AI reference architectures",
+    "description": "Reusable, deployable Azure AI reference architectures and demos by Christopher Maldonado: Foundry agents, AI gateways, RAG knowledge bases, document AI, voice AI, and Microsoft Fabric CI/CD.",
+    "language": "en",
+    "disclaimer": "Personal projects and reference demos. Not official Microsoft products; provided as-is for learning and illustration. Opinions are my own."
+  },
+  "profile": {
+    "name": "Christopher Maldonado",
+    "initials": "CM",
+    "role": "Solution Engineer @ Microsoft",
+    "focus": "Cloud & AI",
+    "location": "Texas",
+    "github": "https://github.com/chmald",
+    "headline": "I build reusable Azure AI reference architectures you can actually deploy.",
+    "bio": "Each project here is a self-contained reference pattern: an architecture diagram, step-by-step docs, testing and troubleshooting guides, and — where it makes sense — an azd template so you can stand it up with a single command. The goal is to turn recurring Cloud & AI questions into working, inspectable starting points.",
+    "about": [
+      "I'm a Solution Engineer at Microsoft focused on Cloud & AI, based in Texas. Most of my work sits where generative AI meets enterprise reality: identity, governance, cost control, observability, and getting from a demo to something a platform team can own.",
+      "The areas I spend the most time in are Azure AI Foundry and agents, AI gateways with Azure API Management, retrieval-augmented generation and document AI, real-time voice AI, and data platforms with Microsoft Fabric.",
+      "Everything listed here is a personal reference project published to GitHub. Fork it, adapt it, and open an issue if something is unclear."
+    ],
+    "focusAreas": [
+      "Azure AI Foundry & agents",
+      "AI gateways (API Management)",
+      "RAG & knowledge agents",
+      "Document AI",
+      "Voice AI",
+      "Data & Microsoft Fabric"
+    ],
+    "links": [
+      {
+        "label": "LinkedIn",
+        "url": "",
+        "todo": "TODO (optional): add a LinkedIn profile URL. Links with an empty url are not rendered."
+      },
+      {
+        "label": "Blog",
+        "url": "",
+        "todo": "TODO (optional): add a blog URL. Links with an empty url are not rendered."
+      }
+    ]
+  },
+  "featured": [
+    "secure-enterprise-agents-landing-zone",
+    "document-qa-knowledge-agent",
+    "ai-cost-governance-gateway"
+  ],
+  "tracks": ["Apps & AI", "Data", "Infra"],
+  "projects": [
+    {
+      "id": "secure-enterprise-agents-landing-zone",
+      "title": "Secure Enterprise Agents Landing Zone",
+      "useCase": "Run enterprise AI agents securely: Foundry hosted agents behind an API Management AI gateway landing zone.",
+      "description": "An audit-first landing zone for Foundry hosted agents. Model and tool access is governed through an Azure API Management AI gateway, with agent identity, end-to-end trace correlation, and token metrics built in.",
+      "highlights": [
+        "Foundry hosted agents fronted by an APIM AI gateway",
+        "Agent identity with Microsoft Entra Agent ID",
+        "Trace correlation and token metrics for audit"
+      ],
+      "repo": "https://github.com/chmald/secure-enterprise-agents-landing-zone",
+      "tracks": ["Apps & AI", "Infra"],
+      "type": "runbook",
+      "deployable": true,
+      "hasTemplate": true,
+      "services": [
+        "Microsoft Foundry (hosted agents)",
+        "Azure API Management (AI gateway)",
+        "Microsoft Entra Agent ID",
+        "Azure Container Apps",
+        "Application Insights",
+        "Azure Key Vault"
+      ],
+      "icon": "agent",
+      "thumbnail": "https://raw.githubusercontent.com/chmald/secure-enterprise-agents-landing-zone/main/docs/assets/foundry-hosted-agents-ai-gateway-landing-zone-architecture.png",
+      "thumbnailAlt": "Architecture diagram: Foundry hosted agents behind an API Management AI gateway with identity, monitoring and network layers"
+    },
+    {
+      "id": "governed-mcp-tool-platform",
+      "title": "Governed MCP Tool Platform",
+      "useCase": "Enterprise governance for Model Context Protocol tools: one front door, identity propagation, and per-team quota and chargeback.",
+      "description": "Runs MCP servers at enterprise scale on Azure. API Management acts as the governance edge (onboarding, quota, token metering) while an MCP gateway runtime handles session-aware routing and dynamic server registration, with Entra identity propagated end to end.",
+      "highlights": [
+        "API Management as the single AI and MCP front door",
+        "Identity propagation from caller to MCP server",
+        "Per-team quota, metering and chargeback"
+      ],
+      "repo": "https://github.com/chmald/governed-mcp-tool-platform",
+      "tracks": ["Apps & AI", "Infra"],
+      "type": "runbook",
+      "deployable": true,
+      "hasTemplate": true,
+      "services": [
+        "Azure API Management",
+        "Azure Kubernetes Service",
+        "Microsoft Entra ID",
+        "Azure API Center",
+        "Azure Cosmos DB",
+        "Application Insights"
+      ],
+      "icon": "tools",
+      "thumbnail": "https://raw.githubusercontent.com/chmald/governed-mcp-tool-platform/main/docs/assets/secure-mcp-gateway-architecture.png",
+      "thumbnailAlt": "Architecture diagram: API Management governance edge in front of an MCP gateway runtime on Kubernetes"
+    },
+    {
+      "id": "ai-cost-governance-gateway",
+      "title": "AI Cost Governance Gateway",
+      "useCase": "Real-time AI budget caps per team and agent, chargeback metrics, and governed MCP tools behind API Management.",
+      "description": "A management portal and governance API with Azure API Management as the AI and MCP gateway. Inference requests are admitted only when a conservative maximum charge fits the team's remaining budget, and token metrics are emitted by team, model, and caller for chargeback.",
+      "highlights": [
+        "Budget is reserved before a model call is sent",
+        "Token metrics by team, model and caller for chargeback",
+        "Agents and service principals spend their team's budget"
+      ],
+      "repo": "https://github.com/chmald/ai-cost-governance-gateway",
+      "tracks": ["Apps & AI", "Infra"],
+      "type": "app",
+      "deployable": true,
+      "hasTemplate": true,
+      "services": [
+        "Azure API Management (AI + MCP gateway)",
+        "Microsoft Foundry",
+        "Azure Container Apps",
+        "Azure Database for PostgreSQL",
+        "Microsoft Entra ID",
+        "Log Analytics"
+      ],
+      "icon": "gauge",
+      "thumbnail": "",
+      "thumbnailAlt": ""
+    },
+    {
+      "id": "secure-agent-chat-webapp",
+      "title": "Secure Agent Chat Web App",
+      "useCase": "An Entra ID–authenticated chat web app for Foundry agents, deployed to Azure Container Apps with one command.",
+      "description": "A web front end for Foundry Agent Service agents with Microsoft Entra ID sign-in. The azd template creates the app registration and deploys the app to Azure Container Apps with managed identity and Application Insights.",
+      "highlights": [],
+      "repo": "https://github.com/chmald/secure-agent-chat-webapp",
+      "tracks": ["Apps & AI"],
+      "type": "app",
+      "deployable": true,
+      "hasTemplate": true,
+      "services": [
+        "Foundry Agent Service",
+        "Azure Container Apps",
+        "Microsoft Entra ID",
+        "Managed Identity",
+        "Application Insights"
+      ],
+      "icon": "chat",
+      "thumbnail": "",
+      "thumbnailAlt": ""
+    },
+    {
+      "id": "document-qa-knowledge-agent",
+      "title": "Document Q&A Knowledge Agent",
+      "useCase": "A reusable RAG knowledge-base pattern: ask questions over your documents and get cited answers.",
+      "description": "A low-code-first, document-domain-agnostic RAG pattern. Documents are ingested with Microsoft Fabric and Document Intelligence into Azure AI Search, and the agent can be built two ways: Copilot Studio (default) or Foundry Agent Service.",
+      "highlights": [
+        "Shared ingestion: Fabric, Document Intelligence, AI Search",
+        "Agent built in Copilot Studio or Foundry Agent Service",
+        "Grounded answers with citations; publish to Teams"
+      ],
+      "repo": "https://github.com/chmald/document-qa-knowledge-agent",
+      "tracks": ["Apps & AI"],
+      "type": "runbook",
+      "deployable": true,
+      "hasTemplate": true,
+      "services": [
+        "Azure AI Search",
+        "Azure AI Document Intelligence",
+        "Microsoft Fabric (OneLake)",
+        "Copilot Studio",
+        "Microsoft Foundry",
+        "Azure Blob Storage"
+      ],
+      "icon": "book",
+      "thumbnail": "https://raw.githubusercontent.com/chmald/document-qa-knowledge-agent/main/docs/assets/rag-knowledge-base-architecture.png",
+      "thumbnailAlt": "Architecture diagram: Fabric and Document Intelligence ingestion into Azure AI Search, consumed by a Copilot Studio or Foundry agent"
+    },
+    {
+      "id": "developer-docs-copilot-grounding",
+      "title": "Developer Docs Copilot Grounding",
+      "useCase": "Ground GitHub Copilot and VS Code agents in your technical documentation through an Azure AI Search knowledge base MCP endpoint.",
+      "description": "Turns a corpus of technical documents into an Azure AI Search knowledge base exposed over MCP, so GitHub Copilot and other MCP clients answer from your own docs instead of general knowledge.",
+      "highlights": [],
+      "repo": "https://github.com/chmald/developer-docs-copilot-grounding",
+      "tracks": ["Apps & AI"],
+      "type": "runbook",
+      "deployable": true,
+      "hasTemplate": true,
+      "services": [
+        "Azure AI Search",
+        "Azure AI Document Intelligence",
+        "Microsoft Foundry",
+        "Azure Blob Storage",
+        "Azure Container Apps"
+      ],
+      "icon": "code",
+      "thumbnail": "https://raw.githubusercontent.com/chmald/developer-docs-copilot-grounding/main/docs/assets/dev-docs-mcp-knowledge-agent-architecture.png",
+      "thumbnailAlt": "Architecture diagram: technical documents indexed into an Azure AI Search knowledge base exposed to GitHub Copilot over MCP"
+    },
+    {
+      "id": "invoice-extraction-di-vs-cu",
+      "title": "Invoice Extraction: Document Intelligence vs. Content Understanding",
+      "useCase": "Compare Azure Document Intelligence and Content Understanding side by side for invoices whose vendor layouts keep changing.",
+      "description": "A comparison harness that runs the same document through both services, normalizes the responses, and produces a side-by-side scorecard plus a tiered router. Runs fully offline in simulate mode when no Azure resources exist yet.",
+      "highlights": [],
+      "repo": "https://github.com/chmald/invoice-extraction-di-vs-cu",
+      "tracks": ["Apps & AI"],
+      "type": "app",
+      "deployable": true,
+      "hasTemplate": true,
+      "services": [
+        "Azure AI Document Intelligence",
+        "Azure AI Content Understanding",
+        "Microsoft Foundry"
+      ],
+      "icon": "document",
+      "thumbnail": "https://raw.githubusercontent.com/chmald/invoice-extraction-di-vs-cu/main/docs/assets/di-vs-cu-architecture.png",
+      "thumbnailAlt": "Architecture diagram: the same invoice routed through Document Intelligence and Content Understanding into a side-by-side scorecard"
+    },
+    {
+      "id": "contact-center-voice-agent-options",
+      "title": "Contact-Center Voice Agent Options",
+      "useCase": "Three ways to build a contact-center voice agent on Azure: Voice Live API, GPT Realtime API, and Foundry voice agents.",
+      "description": "Side-by-side, azd-deployable examples of the three main approaches to real-time voice agents on Azure, on a shared platform, with guidance on when to choose each and how to connect telephony.",
+      "highlights": [],
+      "repo": "https://github.com/chmald/contact-center-voice-agent-options",
+      "tracks": ["Apps & AI"],
+      "type": "app",
+      "deployable": true,
+      "hasTemplate": true,
+      "services": [
+        "Azure AI Voice Live API",
+        "Azure OpenAI GPT Realtime API",
+        "Foundry Agent Service (voice agents)",
+        "Azure Communication Services",
+        "Azure Container Apps",
+        "Azure AI Search"
+      ],
+      "icon": "phone",
+      "thumbnail": "https://raw.githubusercontent.com/chmald/contact-center-voice-agent-options/main/docs/assets/01-architecture-shared-platform.png",
+      "thumbnailAlt": "Architecture diagram: shared platform hosting Voice Live API, GPT Realtime API and Foundry voice agent options"
+    },
+    {
+      "id": "voice-avatar-customer-assistant",
+      "title": "Voice Avatar Customer Assistant",
+      "useCase": "A real-time voice customer assistant with a lifelike avatar, built on the Azure AI Voice Live API.",
+      "description": "Combines the Voice Live API with a real-time text-to-speech avatar for a natural, face-to-face customer assistant experience. Deploys with azd up, with an optional local fallback pipeline.",
+      "highlights": [],
+      "repo": "https://github.com/chmald/voice-avatar-customer-assistant",
+      "tracks": ["Apps & AI"],
+      "type": "app",
+      "deployable": true,
+      "hasTemplate": true,
+      "services": [
+        "Azure AI Speech (Voice Live API)",
+        "Azure text to speech avatar",
+        "Microsoft Foundry",
+        "Azure OpenAI (realtime)"
+      ],
+      "icon": "avatar",
+      "thumbnail": "https://raw.githubusercontent.com/chmald/voice-avatar-customer-assistant/main/docs/assets/ai-voice-live-avatar-architecture.png",
+      "thumbnailAlt": "Architecture diagram: browser client streaming audio to the Voice Live API with a real-time avatar"
+    },
+    {
+      "id": "fabric-dev-to-prod-cicd",
+      "title": "Fabric Dev-to-Prod CI/CD",
+      "useCase": "Promote Microsoft Fabric items from Dev to Prod with Azure DevOps, Git integration, and per-environment Direct Lake values.",
+      "description": "A workshop-style pattern comparing three CI/CD paths for Microsoft Fabric with Azure DevOps: Fabric Git integration, parameterized Direct Lake connections per environment, and a decision guide for choosing the right path.",
+      "highlights": [],
+      "repo": "https://github.com/chmald/fabric-dev-to-prod-cicd",
+      "tracks": ["Data"],
+      "type": "workshop",
+      "deployable": true,
+      "hasTemplate": false,
+      "services": [
+        "Microsoft Fabric",
+        "Azure DevOps",
+        "Fabric Git integration",
+        "Direct Lake on OneLake",
+        "Fabric Variable Library",
+        "Microsoft Entra ID"
+      ],
+      "icon": "pipeline",
+      "thumbnail": "https://raw.githubusercontent.com/chmald/fabric-dev-to-prod-cicd/main/docs/assets/fabric-cicd-ado-integration-architecture.png",
+      "thumbnailAlt": "Architecture diagram: Azure DevOps pipelines promoting Fabric items from a Dev workspace to a Prod workspace"
+    }
+  ]
+}

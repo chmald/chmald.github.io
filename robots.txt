@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://chmald.github.io/sitemap.xml
